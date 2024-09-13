@@ -8,25 +8,14 @@
 }
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: rgb(59, 59, 79);
-  color: black;
-  text-align: center;
-}
-
-h2 {
-  margin-top: 1rem;
-  color: rgba(255, 255, 255, 0.776);
-  font-size: 1.3rem;
-  font-weight: 300;
-  line-height: 30px;
-  letter-spacing: 1px;
+  background-color: #0a0a23;
+  color: white;
   text-align: center;
 }
 .freecodecamp_logo {
-  width: 1.8rem;
-  height: 1.8rem;
-  margin-bottom: -0.6rem;
-  font-weight: 800;
+  width: 15rem;
+  height: 3rem;
+  margin: 1.8rem auto 0;
 }
 h1 {
   letter-spacing: 1px;
