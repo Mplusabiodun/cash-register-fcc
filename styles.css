@@ -1,13 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Verdana:wght@200..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Manrope:wght@200..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Noto Sans Mono", sans-serif;
   background-color: #0a0a23;
   color: white;
   text-align: center;
@@ -18,109 +16,125 @@ body {
   margin: 1.8rem auto 0;
 }
 h1 {
+  font-family: Lato, sans-serif;
   letter-spacing: 1px;
-  text-align: center;
-  margin: 20px auto;
-  font-size: 1.8rem;
-  line-height: 35px;
-  color: white;
-  max-width: 430px;
+  margin: 17px auto;
+  font-size: 2.5rem;
+}
+#change-due {
+  text-align: left;
+  font-size: 1.2rem;
+  margin: 8px auto;
+  width: 15rem;
 }
 form {
-  width: 25%;
-  width: 300px;
-  border-radius: 1rem;
-  margin: 1rem auto;
-  padding: 0.7rem 1.2rem 1rem;
-  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 10px 0 20px;
+  background-color: inherit;
 }
-.small_circle {
-  width: 12px;
-  margin: 0 auto;
-  height: 12px;
-  border-radius: 50%;
-  background-color: #dfdfe2;
+label {
+  font-size: 18px;
+}
+#cash {
+  height: 30px;
+  padding: 10px;
+  margin: 10px;
+  font-size: 15px;
+}
+#purchase-btn {
+  cursor: pointer;
+  width: 100px;
+  height: 30px;
+  margin: 10px;
+  color: #0a0a23;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #feac32;
+  background-image: linear-gradient(#fecc4c, #ffac33);
+  border-color: #feac32;
+  border-width: 3px;
 }
 .container {
-  margin: 20px auto 10px;
-  padding: 12px 8px;
-  text-align: center;
-  overflow: hidden;
-  width: 100%;
-  height: 25rem;
-  text-align: center;
-  background-color: #dfdfe2;
-}
-form p {
-  font-size: 1rem;
-  color: black;
-  text-align: center;
-  margin-bottom: 20px;
-}
-#user-input {
-  display: block;
-  font-size: 1.4rem;
-  color: #0a0a23;
-  width: 80%;
-  height: 40px;
-  padding: 7px 7px;
-  border-radius: 5px;
-  margin: 0 auto;
-  background-color: #fff;
-  border: 1px solid #0a0a23;
-}
-#results-div {
-  font-size: 1.3rem;
-  color: black;
-  text-align: center;
-  width: 90%;
-  overflow: hidden;
-  letter-spacing: 1px;
-  line-height: 25px;
-  margin: 15px auto;
-}
-.button_div {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  width: 100%;
+  align-items: center;
 }
-#check-btn,
-#clear-btn {
-  cursor: pointer;
-  height: 40px;
-  background: #dfdfe2;
-  border: 2px solid #fff;
-  padding: 0.5rem 1.2rem;
-  font-size: 22px;
-  font-weight: 500;
-  letter-spacing: 1px;
+.price-screen {
+  border: 10px solid #99c9ff;
+  background-color: black;
+  height: 50px;
+  width: 200px;
+  margin-left: -40px;
+  color: white;
+  font-size: 1.2rem;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
-#clear-btn {
-  margin-left: 18px;
+.connector {
+  margin: 0 0 0 -9rem;
+  background-color: #99c9ff;
+  height: 30px;
+  width: 40px;
+}
+.top-register {
+  display: flex;
+  justify-content: space-around;
+  border-radius: 35px 35px 0 0;
+  padding-top: 20px;
+  background-color: #99c9ff;
+  height: 280px;
+  width: 355px;
+}
+.btns-container {
+  width: 25%;
+}
+.btn {
+  border-radius: 10%;
+  border: none;
+  width: 20px;
+  height: 20px;
+  background-color: black;
+}
+.cash-drawer {
+  font-size: 1rem;
+  background-color: white;
+  width: 55%;
+  height: 95%;
+  color: black;
+  padding: 10px;
+}
+.bottom-register {
+  background-color: #99c9ff;
+  height: 50px;
+  width: 355px;
+  margin: 10px 0 25px 0;
+}
+.circle {
+  margin: 15px auto;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: black;
 }
 
 /* iPad */
 @media only screen and (max-width: 1024px) {
-  h2 {
-    margin-top: 4rem;
-  }
-  form {
-    width: 45%;
-    margin: 2rem auto;
-  }
-
-  .button_div {
-    margin-top: 1rem;
-  }
-  #check-btn,
-  #clear-btn {
-    height: 45px;
-  }
 }
 
 /* Mobile ----------- */
 @media only screen and (max-width: 767px) {
-  form {
-    width: 65%;
+  .top-register {
+    width: 335px;
+  }
+  .bottom-register {
+    width: 335px;
   }
 }
