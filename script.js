@@ -1,55 +1,125 @@
-let inputtedNum = document.getElementById("user-input");
-let output = document.getElementById("results-div");
-const check_btn = document.getElementById("check-btn");
-const clear_btn = document.getElementById("clear-btn");
+let inputtedCash = document.getElementById("cash");
+let changeDue = document.getElementById("change-due");
+const purchaseBtn = document.getElementById("purchase-btn");
+let cash = inputtedCash.value;
+let price = 1.87;
+let cid = [
+  ["PENNY", 1.01],
+  ["NICKEL", 2.05],
+  ["DIME", 3.1],
+  ["QUARTER", 4.25],
+  ["ONE", 90],
+  ["FIVE", 55],
+  ["TEN", 20],
+  ["TWENTY", 60],
+  ["ONE HUNDRED", 100],
+];
 
-function telephoneCheck() {
-  // Remove all non-digit characters
-  let cleaned = inputtedNum.value.replace(/\D/g, "");
+// function cashfunc() {
+//   let cash = inputtedCash.value;
+//   changeDueHtml.innerHTML = "INSUFFICIENT_FUNDS";
+//   alert(cash);
+// }
+function checkCashRegister() {
+  cash = parseFloat(cash);
 
-  const invalidNumbers = [
-    "1 555)555-5555",
-    "(6054756961)",
-    "2 (757) 622-7382",
-    "0 (757) 622-7382",
-    "-1 (757) 622-7382",
-    "2 757 622-7382",
-    "27576227382",
-    "(275)76227382",
-    "2(757)6227382",
-    "2(757)622-7382",
-    "555)-555-5555",
-    "(555-555-5555",
-    "(555)5(55?)-5555",
-    "55 55-55-555-5",
-  ];
+  let change = cash - price;
+  let register = cid.reduce(
+    (acc, curr) => {
+      acc.total += curr[1];
+      acc[curr[0]] = curr[1];
+      return acc;
+    },
+    { total: 0 }
+  );
 
-  if (cleaned === "") {
-    return alert("Please provide a phone number");
-  }
-  // Check if the cleaned string, has a length of 10 or 11 or contains only digits or correctParentheses
-  else if (
-    (cleaned.length !== 10 && cleaned.length !== 11) ||
-    !/^\d+$/.test(cleaned)
-  ) {
-    output.textContent = `Invalid US number: ${inputtedNum.value}`;
-  }
-  // Check if the cleaned string starts with 1
-  // else if (cleaned.length === 11 && cleaned[0] !== "1") {
-  //   output.textContent = `valid US number: ${inputtedNum.value}`;
-  // }
-  else if (invalidNumbers.includes(inputtedNum.value)) {
-    output.textContent = `Invalid US number: ${inputtedNum.value}`;
+  if (register.total < change) {
+    changeDue.innerHTML = "INSUFFICIENT_FUNDS";
+  } else if (register.total === change) {
+    changeDue.innerHTML = "CLOSED";
   } else {
-    output.textContent = `valid US number: ${inputtedNum.value}`;
+    let changeArr = [];
+    let denominations = [
+      ["ONE HUNDRED", 100],
+      ["TWENTY", 20],
+      ["TEN", 10],
+      ["FIVE", 5],
+      ["ONE", 1],
+      ["QUARTER", 0.25],
+      ["DIME", 0.1],
+      ["NICKEL", 0.05],
+      ["PENNY", 0.01],
+    ];
+    for (let denom of denominations) {
+      let value = denom[1];
+      let amount = Math.floor(change / value);
+      if (register[denom[0]] >= amount * value) {
+        change -= amount * value;
+        changeArr.push([denom[0], amount * value]);
+        register[denom[0]] -= amount * value;
+      }
+    }
+    console.log(changeArr);
+    changeDue.innerHTML = JSON.stringify(changeArr);
   }
 }
 
-function clearOutput() {
-  inputtedNum.value = "";
-  output.textContent = "";
-}
-check_btn.addEventListener("click", (event) => event.preventDefault());
-clear_btn.addEventListener("click", (event) => event.preventDefault());
-check_btn.addEventListener("click", telephoneCheck);
-clear_btn.addEventListener("click", clearOutput);
+purchaseBtn.addEventListener("click", (event) => event.preventDefault());
+purchaseBtn.addEventListener("click", checkCashRegister);
+// purchaseBtn.addEventListener("click", cashfunc);
+
+// Global variables
+// let price = 10.00; // price of the item
+// let cid = [
+//   ["PENNY", 1.01],
+//   ["NICKEL", 2.05],
+//   ["DIME", 3.10],
+//   ["QUARTER", 4.25],
+//   ["ONE", 90.00],
+//   ["FIVE", 55.00],
+//   ["TEN", 20.00],
+//   ["TWENTY", 60.00],
+//   ["ONE HUNDRED", 100.00]
+// ];
+
+// function checkCashRegister() {
+//   let cash = document.getElementById("cash-input").value;
+//   cash = parseFloat(cash);
+
+// let change = cash - price;
+// let register = cid.reduce((acc, curr) => {
+//   acc.total += curr[1];
+//   acc[curr[0]] = curr[1];
+//   return acc;
+// }, { total: 0 });
+
+// if (register.total < change) {
+//   document.getElementById("change-due").innerHTML = "INSUFFICIENT_FUNDS";
+// } else if (register.total === change) {
+//   document.getElementById("change-due").innerHTML = "CLOSED";
+// } else {
+//   let changeArr = [];
+//   let denominations = [
+//     ["ONE HUNDRED", 100],
+//     ["TWENTY", 20],
+//     ["TEN", 10],
+//     ["FIVE", 5],
+//     ["ONE", 1],
+//     ["QUARTER", 0.25],
+//     ["DIME", 0.1],
+//     ["NICKEL", 0.05],
+//     ["PENNY", 0.01]
+//   ];
+// for (let denom of denominations) {
+//   let value = denom[1];
+//   let amount = Math.floor(change / value);
+//   if (register[denom[0]] >= amount * value) {
+//     change -= amount * value;
+//     changeArr.push([denom[0], amount * value]);
+//     register[denom[0]] -= amount * value;
+//   }
+// }
+
+// document.getElementById("change-due").innerHTML = JSON.stringify(changeArr);
+// }
+// }

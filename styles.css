@@ -22,10 +22,10 @@ h1 {
   font-size: 2.5rem;
 }
 #change-due {
-  text-align: left;
-  font-size: 1.2rem;
-  margin: 8px auto;
-  width: 15rem;
+  text-align: center;
+  font-size: 1rem;
+  margin: 22px auto 14px;
+  /* width: 15rem; */
 }
 form {
   display: flex;
