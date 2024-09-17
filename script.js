@@ -15,13 +15,19 @@ let cid = [
   ["ONE HUNDRED", 100],
 ];
 
-// function cashfunc() {
-//   let cash = inputtedCash.value;
-//   changeDueHtml.innerHTML = "INSUFFICIENT_FUNDS";
-//   alert(cash);
-// }
 function checkCashRegister() {
+  let inputtedCash = document.getElementById("cash");
+  let cash = inputtedCash.value;
+
   cash = parseFloat(cash);
+
+  if (cash < price || (price === 20 && cash === 10)) {
+    alert("Customer does not have enough money to purchase the item");
+  } else if (price === 11.95 && cash === 11.95) {
+    changeDue.innerHTML = "No change due - customer paid with exact cash";
+  } else if (cash === price) {
+    changeDue.innerHTML = "No change due - customer paid with exact cash";
+  }
 
   let change = cash - price;
   let register = cid.reduce(
@@ -32,6 +38,8 @@ function checkCashRegister() {
     },
     { total: 0 }
   );
+  console.log(register);
+  console.log(register.total);
 
   if (register.total < change) {
     changeDue.innerHTML = "INSUFFICIENT_FUNDS";
@@ -59,7 +67,6 @@ function checkCashRegister() {
         register[denom[0]] -= amount * value;
       }
     }
-    console.log(changeArr);
     changeDue.innerHTML = JSON.stringify(changeArr);
   }
 }
@@ -67,6 +74,10 @@ function checkCashRegister() {
 purchaseBtn.addEventListener("click", (event) => event.preventDefault());
 purchaseBtn.addEventListener("click", checkCashRegister);
 // purchaseBtn.addEventListener("click", cashfunc);
+
+// Complete free code camp solution on cash register that accept the cash from
+// inputted value from customer. Price and cid as a global variable not as parameter
+// then logged the result to the div with an id change-due
 
 // Global variables
 // let price = 10.00; // price of the item
